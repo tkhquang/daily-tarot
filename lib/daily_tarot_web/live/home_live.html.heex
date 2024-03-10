@@ -2,31 +2,70 @@
   <div class="my-4">
     <ol class="mx-4 md:mx-8 list-decimal">
       <li>Regain calmness, take a deep breath, close your eyes for about 10 seconds.</li>
+
       <li>Answer the question: 'What do you want to know?.'</li>
+
       <li>Choose 1 of the 6 cards below and see the result.</li>
     </ol>
   </div>
+
   <ul class="my-4 grid grid-cols-3 gap-4">
     <%= for {card, index} <- @random_cards |> Enum.with_index() do %>
       <li class="">
-        <DailyTarotWeb.Components.card card={card} index={index} is_flipped={@is_flipped} />
+        <DailyTarotWeb.Components.card card={card} index={index} is_flipped={@flipped_card != nil} flipped_card={@flipped_card} />
       </li>
     <% end %>
   </ul>
+
   <div :if={@flipped_card != nil}>
-    <h1 class="text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl my-8 text-center"><%= DailyTarot.Card.get_name(@flipped_card) %></h1>
+    <h1 class="text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl my-8 text-center">
+      <%= @render_card_info.name %>
+    </h1>
+
     <ul class="flex flex-wrap justify-center my-4">
-      <%= for {keyword, _index} <- @flipped_card |> Map.get("keywords") |> Map.get(@flipped_card |> Map.get("orientation")) |> Enum.with_index() do %>
+      <%= for {keyword, _index} <- @render_card_info.keywords |> Enum.with_index() do %>
         <li class="my-2">
-          <span class="bg-blue-100 text-blue-800 font-medium me-2 px-2.5 py-2 rounded dark:bg-blue-900 dark:text-blue-300"><%= keyword %></span>
+          <span class="text-blue-800 font-medium me-2 px-2.5 py-2 rounded dark:bg-blue-900 dark:text-blue-300 bg-blue-100">
+            <%= keyword %>
+          </span>
         </li>
       <% end %>
     </ul>
-    <p><%= @flipped_card |> Map.get("description") |> Map.get(@flipped_card |> Map.get("orientation")) %></p>
+
+    <p :if={@render_card_info.description != nil}>
+      <%= @render_card_info.description %>
+    </p>
+
+    <p :if={@render_card_info.general != nil}>
+      <%= @render_card_info.general %>
+    </p>
+
+    <div class="my-4" :if={@render_card_info.career != nil}>
+      <h2 class="font-bold">Career 🎯</h2>
+      <p>
+        <%= @render_card_info.career %>
+      </p>
+    </div>
+
+    <div class="my-4" :if={@render_card_info.love != nil}>
+      <h2 class="font-bold">Love 💕</h2>
+      <p>
+        <%= @render_card_info.love %>
+      </p>
+    </div>
+
+    <div class="my-4" :if={@render_card_info.spirituality != nil}>
+      <h2 class="font-bold">Spirituality 🌿</h2>
+      <p>
+        <%= @render_card_info.spirituality %>
+      </p>
+    </div>
+
     <div class="my-4">
       <h2 class="font-bold">Affirmations:</h2>
+
       <ul class="mx-4 md:mx-8 list-disc">
-        <%= for {affirmation, _index} <- @flipped_card |> Map.get("affirmations") |> Map.get(@flipped_card |> Map.get("orientation")) |> Enum.with_index() do %>
+        <%= for {affirmation, _index} <- @render_card_info.affirmations |> Enum.with_index() do %>
           <li class="">
             <p><%= affirmation %></p>
           </li>
