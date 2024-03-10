@@ -1,5 +1,15 @@
 import Config
 
+# Configure your database
+config :daily_tarot, DailyTarot.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "daily_tarot_dev",
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

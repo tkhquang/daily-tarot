@@ -8,6 +8,7 @@
 import Config
 
 config :daily_tarot,
+  ecto_repos: [DailyTarot.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
