@@ -73,4 +73,9 @@
       </ul>
     </div>
   </div>
+
+  <div :if={@flipped_card != nil} class="my-4 flex justify-center w-full space-x-2">
+    <.button phx-click="pick_another_card">Pick another card</.button>
+    <.button phx-click="shuffle_the_cards">Shuffle the cards</.button>
+  </div>
 </div>
