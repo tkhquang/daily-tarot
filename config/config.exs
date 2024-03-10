@@ -22,6 +22,18 @@ config :daily_tarot, DailyTarotWeb.Endpoint,
   pubsub_server: DailyTarot.PubSub,
   live_view: [signing_salt: "RdUTIIvr"]
 
+config :daily_tarot, Oban,
+  notifier: Oban.Notifiers.PG,
+  repo: DailyTarot.Repo,
+  queues: [default: 10],
+  plugins: [
+    {Oban.Plugins.Cron,
+     crontab: [
+       {"0 17 * * *", DailyTarotJob.DailyWorker}
+     ],
+     timezone: "Etc/UTC"}
+  ]
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

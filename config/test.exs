@@ -20,6 +20,8 @@ config :daily_tarot, DailyTarotWeb.Endpoint,
   secret_key_base: "y1pkFu1N4i5PdDLC4yRajF5yXLN7qJI3nbbQnymmF9Omri9wD765n+adqRIni/Xk",
   server: false
 
+config :daily_tarot, Oban, testing: :inline
+
 # In test we don't send emails.
 config :daily_tarot, DailyTarot.Mailer, adapter: Swoosh.Adapters.Test
 

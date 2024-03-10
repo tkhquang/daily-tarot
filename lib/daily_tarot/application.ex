@@ -10,6 +10,7 @@ defmodule DailyTarot.Application do
     children = [
       DailyTarotWeb.Telemetry,
       DailyTarot.Repo,
+      {Oban, Application.fetch_env!(:daily_tarot, Oban)},
       {DNSCluster, query: Application.get_env(:daily_tarot, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: DailyTarot.PubSub},
       # Start the Finch HTTP client for sending emails
