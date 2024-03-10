@@ -25,8 +25,18 @@
       ]
     },
     "description": {
-      "upright": "The Fool represents the start of a new journey, filled with optimism and excitement. It encourages you to take a leap of faith and embrace the unknown with an open mind. This card can also signify a need for playfulness and spontaneity, reminding you to not take life too seriously. The Fool can also indicate innocence and a lack of experience, but it can also symbolize a fresh start and the opportunity to learn and grow. Trust your intuition and take the first step towards your goals.",
-      "reversed": "The reversed Fool suggests that you may be holding back from taking a chance or starting something new. You may be afraid of the unknown or unsure of yourself. This card can also indicate a lack of direction or purpose in your life. You may be feeling lost or unsure of what you want. The reversed Fool can also signify recklessness, impulsiveness, and poor judgment. Be careful not to act without thinking things through. Take some time to reflect on your goals and make sure you are making decisions that are aligned with your values."
+      "upright": {
+        "general": "The Fool represents the start of a new journey, filled with optimism and excitement. It encourages you to take a leap of faith and embrace the unknown with an open mind. This card can also signify a need for playfulness and spontaneity, reminding you to not take life too seriously. The Fool can also indicate innocence and a lack of experience, but it can also symbolize a fresh start and the opportunity to learn and grow. Trust your intuition and take the first step towards your goals.",
+        "career": "In terms of career, The Fool suggests an opportunity for a fresh start. It's time to try something new or unconventional, which could lead to unexpected success. Be open to taking risks and embrace the journey of discovery.",
+        "love": "The Fool in a love context signals an exciting new beginning or adventure in your romantic life. It may suggest an unexpected encounter or a relationship that helps you to see the world in a new way. Remain open to where this path may lead.",
+        "spirituality": "Spiritually, The Fool encourages you to embark on a new path of discovery. This may be an excellent time to explore new beliefs, practices, or areas of personal growth. Listen to your inner voice and follow where your heart leads."
+      },
+      "reversed": {
+        "general": "The reversed Fool suggests that you may be holding back from taking a chance or starting something new. You may be afraid of the unknown or unsure of yourself. This card can also indicate a lack of direction or purpose in your life. You may be feeling lost or unsure of what you want. The reversed Fool can also signify recklessness, impulsiveness, and poor judgment. Be careful not to act without thinking things through. Take some time to reflect on your goals and make sure you are making decisions that are aligned with your values.",
+        "career": "When reversed, The Fool warns of imprudence and hastily made decisions in your career. Take time to consider your options carefully before jumping into anything new.",
+        "love": "In love, The Fool reversed can indicate hesitancy to open your heart to someone new or to take the next step in a relationship. It suggests the need for self-reflection and to overcome fears that are holding you back.",
+        "spirituality": "Reversed, The Fool in a spiritual context suggests that you might be neglecting your inner needs and spiritual growth. It's time to reconnect with your spiritual path and to trust the journey, even if the destination is not yet clear."
+      }
     },
     "affirmations": {
       "upright": [
@@ -74,8 +84,18 @@
       ]
     },
     "description": {
-      "upright": "The Magician represents the power of manifestation and the potential to achieve your goals through focused action, willpower, and your innate abilities. It signifies a time of new beginnings, resourcefulness, and the ability to bring ideas into reality. The Magician also encourages clear communication and confident self-expression.",
-      "reversed": "The reversed Magician can indicate wasted potential, a lack of focus, and difficulty manifesting your desires. It may point to deception, manipulation, or communication issues that are hindering your progress. This card can also suggest self-doubt, a lack of confidence, and the need to tap into your hidden talents and abilities."
+      "upright": {
+        "general": "The Magician represents the power of manifestation and the potential to achieve your goals through focused action, willpower, and your innate abilities. It signifies a time of new beginnings, resourcefulness, and the ability to bring ideas into reality. The Magician also encourages clear communication and confident self-expression. The Magician symbolizes manifesting your desires into reality, suggesting you have the resources and capabilities needed to succeed. It's a time to take action with confidence, utilizing your skills and initiative.",
+        "career": "Professionally, this card signifies a period of creativity and realization. It's time to use your talents and assertiveness to advance your career goals.",
+        "love": "In love, The Magician represents a dynamic and transformative time. Whether single or in a relationship, your charisma and clear communication lead to fulfilling connections.",
+        "spirituality": "Spiritually, this card indicates a powerful time of insight and clarity. Harness your inner knowledge and intuition to guide your spiritual journey."
+      },
+      "reversed": {
+        "general": "The reversed Magician can indicate wasted potential, a lack of focus, and difficulty manifesting your desires. It may point to deception, manipulation, or communication issues that are hindering your progress. This card can also suggest self-doubt, a lack of confidence, and the need to tap into your hidden talents and abilities. Reversed, The Magician warns of unexploited potential and manipulation. It's time to reassess your approach, ensuring your actions align with your true intentions.",
+        "career": "In career contexts, this reversal suggests misused skills or missed opportunities. Reflect on your professional conduct and realign with your objectives.",
+        "love": "Reversed in love, The Magician cautions against deception or misunderstandings. Communication is key; ensure honesty and transparency in your relationships.",
+        "spirituality": "On a reversed spiritual path, The Magician advises reconnecting with your inner self. Avoid distractions and focus on your true spiritual goals."
+      }
     },
     "affirmations": {
       "upright": [
@@ -122,8 +142,18 @@
       ]
     },
     "description": {
-      "upright": "The High Priestess represents a deep connection to intuition, inner wisdom, and the subconscious mind. It suggests a time for introspection, reflection, and trusting your gut feeling. This card can also indicate hidden knowledge, secrets, and mysteries that are waiting to be revealed. In love, it can signify a soulmate connection or a deep and meaningful relationship. In career, it can suggest a desire for further education or training, or a need to listen to your intuition when making decisions.",
-      "reversed": "The reversed High Priestess suggests that you are out of touch with your intuition and inner wisdom. You may be feeling confused, overwhelmed, or unsure of what to do. This card can also indicate secrets that are coming to light, or misinformation that is causing problems. In love, it can warn of a hidden agenda or a relationship that is not based on honesty and trust. In career, it can signify a lack of direction or clarity."
+      "upright": {
+        "general": "The High Priestess represents a deep connection to intuition, inner wisdom, and the subconscious mind. It suggests a time for introspection, reflection, and trusting your gut feeling. This card can also indicate hidden knowledge, secrets, and mysteries that are waiting to be revealed. In love, it can signify a soulmate connection or a deep and meaningful relationship. In career, it can suggest a desire for further education or training, or a need to listen to your intuition when making decisions.",
+        "career": "This signifies a period where you should rely more on your intuition and inner guidance for career-related decisions. The High Priestess advises you to look beyond the obvious and explore hidden aspects in your professional life. It may also suggest that secret or unseen forces are at play regarding your career.",
+        "love": "In love matters, The High Priestess suggests listening to your inner voice and intuition. A relationship may have deeper, hidden aspects to explore. For singles, it may indicate that understanding your own inner mysteries could lead to meaningful connections.",
+        "spirituality": "This card highlights a significant time for spiritual introspection and accessing your inner psychic knowledge. Engage more deeply with your spiritual practices, as they are likely to reveal new insights and wisdom."
+      },
+      "reversed": {
+        "general": "When reversed, The High Priestess suggests that you may be ignoring your inner voice and intuition. There might be a disconnect between your conscious and subconscious mind, leading to confusion or a sense of being lost. It's a call to reconnect with your inner self and heed the messages from your subconscious.",
+        "career": "Reversed, this card warns of potential unseen problems in your career. It suggests that you may not be listening to your intuition about work matters, which could lead to missed opportunities or misjudgments.",
+        "love": "In love, the reversed High Priestess can indicate misunderstandings or a failure to heed one's inner feelings about a relationship. There might be secrets or unacknowledged truths that need to surface before you can move forward.",
+        "spirituality": "This position can suggest a blockage in your spiritual path or a disconnection from your inner self. It's time to break through these barriers and explore the deeper, spiritual aspects of your being."
+      }
     },
     "affirmations": {
       "upright": [
@@ -172,8 +202,18 @@
       ]
     },
     "description": {
-      "upright": "The Empress represents the feminine energy of creation, fertility, and abundance. She is a nurturing figure who encourages us to connect with our creativity and express ourselves authentically. This card can also signify new beginnings, personal growth, and a sense of well-being.",
-      "reversed": "The reversed Empress can indicate blocked creativity, lack of abundance, or emotional instability. It may also suggest materialism, narcissism, or overindulgence. In some cases, it can even foreshadow unwanted pregnancy. This card is a call to reconnect with your feminine energy and nurture yourself."
+      "upright": {
+        "general": "The Empress represents the feminine energy of creation, fertility, and abundance. She is a nurturing figure who encourages us to connect with our creativity and express ourselves authentically. This card can also signify new beginnings, personal growth, and a sense of well-being.",
+        "career": "Indicates a period of creativity and growth in your career. Collaboration and recognition for contributions are likely.",
+        "love": "Suggests deepening relationships and comfort in companionship. For singles, it signifies that nurturing love may be on its way.",
+        "spirituality": "Encourages connection with the natural world and understanding the cycles of life, embracing intuition and universal energy."
+      },
+      "reversed": {
+        "general": "The reversed Empress can indicate blocked creativity, lack of abundance, or emotional instability. It may also suggest materialism, narcissism, or overindulgence. In some cases, it can even foreshadow unwanted pregnancy. This card is a call to reconnect with your feminine energy and nurture yourself.",
+        "career": "Points to a lack of creativity and progress at work, possibly feeling stagnant or underappreciated.",
+        "love": "Could indicate troubles in a relationship due to neglect or lack of emotional support, or the need for self-love before finding love externally.",
+        "spirituality": "Suggests a disconnection from nature and spiritual self, urging a reconnection to earth and inner intuition."
+      }
     },
     "affirmations": {
       "upright": [
@@ -216,8 +256,18 @@
       ]
     },
     "description": {
-      "upright": "The Emperor represents stability, security, and control. It signifies a strong, authoritative presence, a father figure who provides structure and guidance. This card can also indicate a need for discipline, organization, and clear boundaries. In a career context, it can represent success, leadership, and a clear vision for the future.",
-      "reversed": "The reversed Emperor card suggests an imbalance of power, an overbearing or controlling personality, or a lack of discipline. It can also indicate immaturity, a fear of commitment, or a reliance on others to make decisions. In a career context, it can represent challenges to authority, lack of direction, or a need to loosen up and be more flexible."
+      "upright": {
+        "general": "The Emperor symbolizes authority, structure, and control, offering guidance, stability, and security. He represents the power of rationality and leadership, encouraging you to assert dominion over your environment through order and rules.",
+        "career": "In a career reading, The Emperor suggests a period of leadership, suggesting you may either be in a position of power or need to embrace leadership qualities. It highlights the importance of structure and strategy in achieving professional success.",
+        "love": "In love, this card suggests a phase of stability and structure within relationships. It may indicate the role of a protector or a need for clear communication and boundaries within the relationship.",
+        "spirituality": "Spiritually, The Emperor urges you to construct your personal code of ethics and to structure your spiritual beliefs. It emphasizes the need for discipline and order in your spiritual practices."
+      },
+      "reversed": {
+        "general": "Reversed, The Emperor signifies excess rigidity, authoritarianism, or a lack of flexibility. It warns against over-control or using power and authority to oppress others.",
+        "career": "In career matters, the reversed Emperor may suggest a lack of control or authority, or challenges to your leadership. It could also warn against micromanagement or a need to delegate.",
+        "love": "Reversed in a love context, it can represent an imbalance of power, control issues, or inflexibility within a relationship. It may suggest the need to address authoritarian behavior or to establish clearer boundaries.",
+        "spirituality": "In spiritual terms, a reversed Emperor suggests that your structured beliefs may be limiting your growth. It's time to challenge old doctrines and embrace a more flexible approach to your spiritual path."
+      }
     },
     "affirmations": {
       "upright": [
