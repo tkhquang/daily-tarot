@@ -27,6 +27,10 @@ defmodule DailyTarotUtils.WebHelper do
 
   def serialize_to_token(state_data) do
     salt = Application.get_env(:daily_tarot, DailyTarotWeb.Endpoint)[:live_view][:signing_salt]
-    Phoenix.Token.encrypt(DailyTarotWeb.Endpoint, salt, state_data)
+
+    Phoenix.Token.encrypt(DailyTarotWeb.Endpoint, salt, %{
+      data: state_data,
+      timestamp: DateTime.utc_now()
+    })
   end
 end

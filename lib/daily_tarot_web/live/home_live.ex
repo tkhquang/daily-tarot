@@ -30,15 +30,35 @@ defmodule DailyTarotWeb.HomeLive do
   def handle_params(_params, _, socket) do
     # Only try to talk to the client when the websocket
     # is setup. Not on the initial "static" render.
+
+    # TODO: Break down to multiple branches later
     new_socket =
       if connected?(socket) do
+        %{
+          "locale" => locale,
+          "timezone" => timezone,
+          "timezone_offset" => timezone_offset
+        } = get_connect_params(socket)
+
+        socket
+        |> assign(
+          locale: locale,
+          timezone: timezone,
+          timezone_offset: timezone_offset
+        )
+      else
+        socket
+      end
+
+    new_socket =
+      if connected?(new_socket) do
         # This represents some meaningful key to your LiveView that you can
         # store and restore state using. Perhaps an ID from the page
         # the user is visiting?
         # For handle_params, it could be
         # storage_key = params["id"]
 
-        socket
+        new_socket
         |> assign(:storage_key, @storage_key)
         # request the browser to restore any state it has for this key.
         |> push_event("localStorage.restore", %{key: @storage_key, event: "restore_settings"})
@@ -46,7 +66,14 @@ defmodule DailyTarotWeb.HomeLive do
         socket
       end
 
-    new_socket = new_socket |> assign(:is_loading, false)
+    new_socket =
+      if connected?(new_socket) do
+        new_socket
+        |> assign(is_loading: false)
+      else
+        socket
+      end
+
     {:noreply, new_socket}
   end
 
@@ -54,6 +81,12 @@ defmodule DailyTarotWeb.HomeLive do
   # Pushed from JS hook. Server requests it to send up any
   # stored settings for the key.
   def handle_event("restore_settings", token_data, socket) when is_binary(token_data) do
+    %{
+      assigns: %{
+        timezone: timezone
+      }
+    } = socket
+
     socket =
       case restore_from_token(token_data) do
         {:ok, nil} ->
@@ -62,13 +95,28 @@ defmodule DailyTarotWeb.HomeLive do
 
         {:ok,
          %{
-           random_cards: random_cards,
-           flipped_card: flipped_card
+           data: %{
+             random_cards: random_cards,
+             flipped_card: flipped_card
+           },
+           timestamp: timestamp
          }} ->
-          socket
-          |> assign(:random_cards, random_cards)
-          |> assign(:flipped_card, flipped_card)
-          |> assign(:render_card_info, Card.get_render_info(flipped_card))
+          {:ok, timestamp} = timestamp |> DateTime.shift_zone(timezone)
+          {:ok, now} = DateTime.utc_now() |> DateTime.shift_zone(timezone)
+
+          case Date.compare(now, timestamp) do
+            :gt ->
+              socket
+              |> assign(:random_cards, Card.get_random_cards(socket.assigns.cards, 6))
+              |> assign(:flipped_card, nil)
+              |> assign(:render_card_info, nil)
+
+            _ ->
+              socket
+              |> assign(:random_cards, random_cards)
+              |> assign(:flipped_card, flipped_card)
+              |> assign(:render_card_info, Card.get_render_info(flipped_card))
+          end
 
         {:error, reason} ->
           # We don't continue checking. Display error.
