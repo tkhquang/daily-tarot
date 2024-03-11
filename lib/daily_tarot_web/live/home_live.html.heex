@@ -1,4 +1,4 @@
-<div class="container">
+<div :if={not @is_loading} class="container">
   <div class="my-4">
     <ol class="mx-4 md:mx-8 list-decimal">
       <li>Regain calmness, take a deep breath, close your eyes for about 10 seconds.</li>
@@ -12,7 +12,7 @@
   <ul class="my-4 grid grid-cols-3 gap-4">
     <%= for {card, index} <- @random_cards |> Enum.with_index() do %>
       <li class="">
-        <DailyTarotWeb.Components.card card={card} index={index} is_flipped={@flipped_card != nil} flipped_card={@flipped_card} />
+        <.flip_card card={card} index={index} is_flipped={@flipped_card != nil} flipped_card={@flipped_card} />
       </li>
     <% end %>
   </ul>
@@ -78,4 +78,7 @@
     <.button phx-click="pick_another_card">Pick another card</.button>
     <.button phx-click="shuffle_the_cards">Shuffle the cards</.button>
   </div>
+</div>
+<div :if={@is_loading} class="flex w-full h-full items-center justify-center flex-1">
+  Loading...
 </div>

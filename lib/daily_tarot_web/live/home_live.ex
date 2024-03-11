@@ -1,12 +1,30 @@
 defmodule DailyTarotWeb.HomeLive do
   use DailyTarotWeb, :live_view
 
+  import DailyTarotWeb.TarotCard.FlipCard
+  import DailyTarotUtils.WebHelper
+
   alias DailyTarot.Card
-  alias DailyTarot.Helper
+  alias DailyTarotUtils.Json
 
   require Logger
 
   @storage_key "DAILY_TAROT_STORAGE"
+
+  @impl true
+  def mount(_params, _session, socket) do
+    {:ok, cards} = Json.get_json("assets/json/cards.json")
+
+    socket =
+      assign(socket,
+        cards: cards,
+        random_cards: Card.get_random_cards(cards, 6),
+        flipped_card: nil,
+        is_loading: true
+      )
+
+    {:ok, socket}
+  end
 
   @impl true
   def handle_params(_params, _, socket) do
@@ -28,45 +46,8 @@ defmodule DailyTarotWeb.HomeLive do
         socket
       end
 
+    new_socket = new_socket |> assign(:is_loading, false)
     {:noreply, new_socket}
-  end
-
-  @impl true
-  def mount(_params, _session, socket) do
-    {:ok, cards} = Helper.get_json("assets/json/cards.json")
-
-    socket =
-      assign(socket,
-        cards: cards,
-        random_cards: Card.get_random_cards(cards, 6),
-        flipped_card: nil
-      )
-
-    {:ok, socket}
-  end
-
-  defp restore_from_token(token) do
-    salt = Application.get_env(:daily_tarot, DailyTarotWeb.Endpoint)[:live_view][:signing_salt]
-    # Max age is 1 day. 86,400 seconds
-    case Phoenix.Token.decrypt(DailyTarotWeb.Endpoint, salt, token, max_age: 86_400) do
-      {:ok, data} ->
-        {:ok, data}
-
-      {:error, reason} ->
-        # handles `:invalid`, `:expired` and possibly other things?
-        {:error, "Failed to restore previous state. Reason: #{inspect(reason)}."}
-    end
-  end
-
-  defp serialize_to_token(state_data) do
-    salt = Application.get_env(:daily_tarot, DailyTarotWeb.Endpoint)[:live_view][:signing_salt]
-    Phoenix.Token.encrypt(DailyTarotWeb.Endpoint, salt, state_data)
-  end
-
-  # Push a websocket event down to the browser's JS hook.
-  # Clear any settings for the current storage_key.
-  defp clear_browser_storage(socket) do
-    push_event(socket, "clear", %{key: socket.assigns.storage_key})
   end
 
   @impl true
@@ -94,7 +75,7 @@ defmodule DailyTarotWeb.HomeLive do
           # Clear the token so it doesn't keep showing an error.
           socket
           |> put_flash(:error, reason)
-          |> clear_browser_storage()
+          |> push_event("clear", %{key: socket.assigns.storage_key})
       end
 
     {:noreply, socket}

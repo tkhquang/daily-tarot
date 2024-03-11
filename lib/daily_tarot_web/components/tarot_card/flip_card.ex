@@ -1,10 +1,11 @@
-defmodule DailyTarotWeb.Components do
+defmodule DailyTarotWeb.TarotCard.FlipCard do
+  @moduledoc false
   use Phoenix.Component
 
   alias DailyTarot.Card
-  alias DailyTarot.Helper
+  import DailyTarotUtils.WebHelper
 
-  def card(assigns) do
+  def flip_card(assigns) do
     flipped_card_number = (assigns.flipped_card || %{}) |> Map.get("number")
     card_number = assigns.card |> Map.get("number")
     orientation = assigns.card |> Map.get("orientation")
@@ -25,7 +26,7 @@ defmodule DailyTarotWeb.Components do
       <div
         class={[
           "relative preserve-3d w-full h-full duration-1000 shadow-md",
-          Helper.classes("rotate-y-180": @is_flipped_card)
+          classes("rotate-y-180": @is_flipped_card)
         ]}
         data-index={@index}
         phx-click={if !@is_flipped, do: "flip_card", else: nil}
@@ -33,14 +34,14 @@ defmodule DailyTarotWeb.Components do
         phx-value-index={@index}
       >
         <div class="absolute backface-hidden border-2 w-full h-full">
-          <img class="w-full h-full" src={Card.get_image_url(:preview)} alt="Flipped card" />
+          <img class="w-full h-full text-white" src={Card.get_image_url(:preview)} alt="Flipped card" />
         </div>
         
         <div class="absolute rotate-y-180 backface-hidden w-full h-full bg-gray-100 overflow-hidden">
           <img
             class={[
               "w-full h-full",
-              Helper.classes("rotate-180": @orientation == :reversed)
+              classes("rotate-180": @orientation == :reversed)
             ]}
             src={Card.get_image_url(@card)}
             alt={Card.get_name(@card)}
