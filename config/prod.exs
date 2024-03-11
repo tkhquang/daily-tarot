@@ -15,7 +15,8 @@ config :daily_tarot, DailyTarotWeb.Endpoint,
     host: System.get_env("URL_HOST"),
     port: System.get_env("URL_PORT")
   ],
-  check_origin: System.get_env("CHECK_ORIGIN") |> String.split(",")
+  check_origin: System.get_env("CHECK_ORIGIN") |> String.split(","),
+  force_ssl: [rewrite_on: [:x_forwarded_proto], host: nil]
 
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: DailyTarot.Finch
