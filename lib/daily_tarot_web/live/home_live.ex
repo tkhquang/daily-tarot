@@ -41,7 +41,7 @@ defmodule DailyTarotWeb.HomeLive do
         socket
         |> assign(:storage_key, @storage_key)
         # request the browser to restore any state it has for this key.
-        |> push_event("restore", %{key: @storage_key, event: "restore_settings"})
+        |> push_event("localStorage.restore", %{key: @storage_key, event: "restore_settings"})
       else
         socket
       end
@@ -75,7 +75,7 @@ defmodule DailyTarotWeb.HomeLive do
           # Clear the token so it doesn't keep showing an error.
           socket
           |> put_flash(:error, reason)
-          |> push_event("clear", %{key: socket.assigns.storage_key})
+          |> push_event("localStorage.clear", %{key: socket.assigns.storage_key})
       end
 
     {:noreply, socket}
@@ -97,7 +97,7 @@ defmodule DailyTarotWeb.HomeLive do
         flipped_card: card,
         render_card_info: Card.get_render_info(card)
       )
-      |> push_event("store", %{
+      |> push_event("localStorage.store", %{
         key: socket.assigns.storage_key,
         data:
           serialize_to_token(%{
@@ -117,7 +117,7 @@ defmodule DailyTarotWeb.HomeLive do
         flipped_card: nil,
         render_card_info: nil
       )
-      |> push_event("store", %{
+      |> push_event("localStorage.store", %{
         key: socket.assigns.storage_key,
         data:
           serialize_to_token(%{
@@ -140,7 +140,7 @@ defmodule DailyTarotWeb.HomeLive do
         flipped_card: nil,
         render_card_info: nil
       )
-      |> push_event("store", %{
+      |> push_event("localStorage.store", %{
         key: socket.assigns.storage_key,
         data:
           serialize_to_token(%{
