@@ -17,68 +17,14 @@
     <% end %>
   </ul>
 
-  <div :if={@flipped_card != nil}>
-    <h1 class="text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl my-8 text-center">
-      <%= @render_card_info.name %>
-    </h1>
-
-    <ul class="flex flex-wrap justify-center my-4">
-      <%= for {keyword, _index} <- @render_card_info.keywords |> Enum.with_index() do %>
-        <li class="my-2">
-          <span class="text-blue-800 font-medium me-2 px-2.5 py-2 rounded dark:bg-blue-900 dark:text-blue-300 bg-blue-100">
-            <%= keyword %>
-          </span>
-        </li>
-      <% end %>
-    </ul>
-
-    <p :if={@render_card_info.description != nil}>
-      <%= @render_card_info.description %>
-    </p>
-
-    <p :if={@render_card_info.general != nil}>
-      <%= @render_card_info.general %>
-    </p>
-
-    <div class="my-4" :if={@render_card_info.career != nil}>
-      <h2 class="font-bold">Career 🎯</h2>
-      <p>
-        <%= @render_card_info.career %>
-      </p>
-    </div>
-
-    <div class="my-4" :if={@render_card_info.love != nil}>
-      <h2 class="font-bold">Love 💕</h2>
-      <p>
-        <%= @render_card_info.love %>
-      </p>
-    </div>
-
-    <div class="my-4" :if={@render_card_info.spirituality != nil}>
-      <h2 class="font-bold">Spirituality 🌿</h2>
-      <p>
-        <%= @render_card_info.spirituality %>
-      </p>
-    </div>
-
-    <div class="my-4">
-      <h2 class="font-bold">Affirmations:</h2>
-
-      <ul class="mx-4 md:mx-8 list-disc">
-        <%= for {affirmation, _index} <- @render_card_info.affirmations |> Enum.with_index() do %>
-          <li class="">
-            <p><%= affirmation %></p>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+  <.interpretation :if={@flipped_card != nil} render_card_info={@render_card_info} />
 
   <div :if={@flipped_card != nil} class="my-4 flex justify-center w-full space-x-2">
     <.button phx-click="pick_another_card">Pick another card</.button>
     <.button phx-click="shuffle_the_cards">Shuffle the cards</.button>
   </div>
 </div>
+
 <div :if={@is_loading} class="flex w-full h-full items-center justify-center flex-1">
   Loading...
 </div>

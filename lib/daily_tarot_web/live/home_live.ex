@@ -1,6 +1,7 @@
 defmodule DailyTarotWeb.HomeLive do
   use DailyTarotWeb, :live_view
 
+  import DailyTarotWeb.Interpretation
   import DailyTarotWeb.TarotCard.FlipCard
   import DailyTarotUtils.WebHelper
 
