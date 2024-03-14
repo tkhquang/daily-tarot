@@ -200,4 +200,11 @@ defmodule DailyTarotWeb.HomeLive do
 
     {:noreply, socket}
   end
+
+  @impl true
+  def handle_event("imageLoadingState.loaded", session, socket) do
+    IO.inspect({"Image loaded", session})
+
+    {:noreply, socket}
+  end
 end

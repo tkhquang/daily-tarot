@@ -1,6 +1,8 @@
 defmodule DailyTarot.Card do
   @orientations ~w(upright reversed)a
 
+  @imgix_url Application.compile_env!(:daily_tarot, DailyTarot)[:imgix_url]
+
   def get_card_by_number(cards, number) do
     card =
       cards
@@ -18,14 +20,18 @@ defmodule DailyTarot.Card do
     end)
   end
 
-  def get_image_url(:preview), do: "/images/cards/78.webp"
+  def get_image_url(:preview),
+    do: "#{@imgix_url}/cards/78.webp?&q=80&dpr=0.5&auto=format"
 
-  def get_image_url(card) do
-    %{
-      "number" => number
-    } = card
+  def get_image_url(number) do
+    "#{@imgix_url}/cards/#{number}.webp?&q=80&dpr=0.5&auto=format"
+  end
 
-    "/images/cards/#{number}.webp"
+  def get_image_url(:preview, :placeholder),
+    do: "#{@imgix_url}/cards/78.webp?blur=200&px=16&q=75&dpr=0.5&auto=format"
+
+  def get_image_url(number, :placeholder) do
+    "#{@imgix_url}/cards/#{number}.webp?blur=200&px=16&q=75&dpr=0.5&auto=format"
   end
 
   def get_name(%{

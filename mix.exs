@@ -60,7 +60,7 @@ defmodule DailyTarot.MixProject do
       {:bandit, "~> 1.2"},
       {:oban, "~> 2.17"},
       {:tzdata, "~> 1.1"},
-      {:dotenvy, "~> 0.8.0"}
+      {:uuid, "~> 1.1"}
     ]
   end
 

@@ -3,3 +3,8 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+:root {
+  --img-blur: 42px;
+  --img-scale: 1.5;
+  --img-transition-duration: 1.2s;
+}

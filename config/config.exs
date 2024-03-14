@@ -7,6 +7,8 @@
 # General application configuration
 import Config
 
+config :daily_tarot, DailyTarot, imgix_url: System.get_env("IMGIX_URL")
+
 config :daily_tarot,
   ecto_repos: [DailyTarot.Repo],
   generators: [timestamp_type: :utc_datetime]

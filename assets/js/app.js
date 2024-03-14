@@ -22,8 +22,9 @@ import { Socket } from "phoenix";
 import { LiveSocket } from "phoenix_live_view";
 import topbar from "../vendor/topbar";
 import LocalStateStore from "./hooks/localStateStore";
+import ImageLoadingState from "./hooks/imageLoadingState";
 
-let Hooks = { LocalStateStore };
+let Hooks = { LocalStateStore, ImageLoadingState };
 
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")

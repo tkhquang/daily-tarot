@@ -115,6 +115,28 @@ module.exports = {
         ".backface-hidden": {
           backfaceVisibility: "hidden",
         },
+        ".lqip-image": {
+          filter: "blur(var(--img-blur))",
+          transition: "var(--img-transition-duration) ease",
+          transitionProperty: "filter",
+          willChange: "filter",
+        },
+        ".lqip-image__loaded": {
+          filter: "blur(0)",
+        },
+        ".lqip-placeholder": {
+          filter: "blur(var(--img-blur))",
+          transform: "scale(var(--img-scale))",
+          opacity: "1",
+          transition: "var(--img-transition-duration) ease",
+          transitionProperty: "filter, opacity, transform",
+          willChange: "filter, transform",
+        },
+        ".lqip-placeholder__image-loaded": {
+          filter: "blur(0)",
+          transform: "scale(1)",
+          opacity: "0",
+        },
       });
     }),
   ],

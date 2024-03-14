@@ -1,5 +1,4 @@
 import Config
-import Dotenvy
 
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the
@@ -17,8 +16,6 @@ import Dotenvy
 #
 # Alternatively, you can use `mix phx.gen.release` to generate a `bin/server`
 # script that automatically sets the env var above.
-
-source!([".env", System.get_env()])
 
 if System.get_env("PHX_SERVER") do
   config :daily_tarot, DailyTarotWeb.Endpoint, server: true
