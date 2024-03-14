@@ -6,10 +6,10 @@ defmodule DailyTarotWeb.TarotCard.FlipCardImage do
 
   def flip_card_image(assigns) do
     assigns =
-      assign(
+      assign_new(
         assigns,
-        is_loaded: false,
-        id: UUID.uuid4()
+        :id,
+        fn -> UUID.uuid4() end
       )
 
     ~H"""
@@ -22,7 +22,7 @@ defmodule DailyTarotWeb.TarotCard.FlipCardImage do
         phx-hook="ImageLoadingState"
       />
       <img
-        id={"placeholder" <> @id}
+        id={"placeholder-" <> @id}
         class="lqip-placeholder absolute inset-0 pointer-events-none transform-gpu [&[data-loading='true']]:text-[0px]"
         src={Card.get_image_url(@card_number, :placeholder)}
         alt="Flipped card"
