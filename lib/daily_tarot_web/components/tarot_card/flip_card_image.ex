@@ -1,17 +1,10 @@
 defmodule DailyTarotWeb.TarotCard.FlipCardImage do
   @moduledoc false
-  use Phoenix.Component
+  use Phoenix.LiveComponent
 
   alias DailyTarot.Card
 
-  def flip_card_image(assigns) do
-    assigns =
-      assign_new(
-        assigns,
-        :id,
-        fn -> UUID.uuid4() end
-      )
-
+  def render(assigns) do
     ~H"""
     <div class="absolute backface-hidden border-2 w-full h-full overflow-hidden">
       <img

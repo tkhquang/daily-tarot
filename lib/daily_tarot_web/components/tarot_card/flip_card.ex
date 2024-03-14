@@ -3,7 +3,7 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
   use Phoenix.Component
 
   import DailyTarotUtils.WebHelper
-  import DailyTarotWeb.TarotCard.FlipCardImage
+  alias DailyTarotWeb.TarotCard.FlipCardImage
 
   def flip_card(assigns) do
     flipped_card_number = (assigns.flipped_card || %{}) |> Map.get("number")
@@ -33,9 +33,9 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
         phx-value-card_number={@card_number}
         phx-value-index={@index}
       >
-        <.flip_card_image card_number={:preview} />
+        <.live_component module={FlipCardImage} card_number={:preview} id={"back-#{@index}"} />
         <div class="absolute rotate-y-180 backface-hidden w-full h-full bg-gray-100 overflow-hidden">
-          <.flip_card_image card_number={@card_number} />
+          <.live_component module={FlipCardImage} card_number={@card_number} id={"front-#{@index}"} />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 const imageHooks = {
   mounted() {
-    this.setLoading(true);
+    this.setLoading(!this.el.complete);
 
     this.el.addEventListener("load", () => {
       this.setLoading(false);
