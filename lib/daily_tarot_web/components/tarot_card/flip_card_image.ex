@@ -7,7 +7,7 @@ defmodule DailyTarotWeb.TarotCard.FlipCardImage do
 
   def render(assigns) do
     ~H"""
-    <div class="absolute backface-hidden border-2 w-full h-full overflow-hidden">
+    <div class="overflow-hidden">
       <img
         id={@id}
         class={[
@@ -20,7 +20,10 @@ defmodule DailyTarotWeb.TarotCard.FlipCardImage do
       />
       <img
         id={"placeholder-" <> @id}
-        class="lqip-placeholder absolute inset-0 pointer-events-none transform-gpu [&[data-js-loading='true']]:text-[0px]"
+        class={[
+          "lqip-placeholder absolute inset-0 pointer-events-none transform-gpu [&[data-js-loading='true']]:text-[0px]",
+          classes("rotate-180": @orientation == :reversed)
+        ]}
         src={Card.get_image_url(@card_number, :placeholder)}
         alt="Flipped card"
         phx-hook="ImageLoadingState"

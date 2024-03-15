@@ -41,6 +41,10 @@ let liveSocket = new LiveSocket("/live", Socket, {
   dom: {
     // Guarantee that some attributes set on the client-side are kept intact:
     onBeforeElUpdated(from, to) {
+      if (from.id === "back-0") {
+        console.log(from.id, from.className);
+        console.log(to.id, to.className);
+      }
       for (const attr of from.attributes) {
         if (attr.name.startsWith("data-js-")) {
           to.setAttribute(attr.name, attr.value);

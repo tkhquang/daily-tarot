@@ -26,7 +26,13 @@ config :daily_tarot, DailyTarotWeb.Endpoint,
   secret_key_base: "/PDJqjwCP4/J4aCArDgX1XSfsubSn5xzj8BNINZPAV0g7uiDIolJ49pa90AHuN47",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:daily_tarot, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:daily_tarot, ~w(--watch)]}
+    sass: {
+      DartSass,
+      :install_and_run,
+      [:default, ~w(--embed-source-map --source-map-urls=absolute --watch)]
+    },
+    tailwind: {Tailwind, :install_and_run, [:app, ~w(--watch)]},
+    tailwind_extra: {Tailwind, :install_and_run, [:extra, ~w(--watch)]}
   ]
 
 # ## SSL Support

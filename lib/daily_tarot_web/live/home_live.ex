@@ -67,14 +67,6 @@ defmodule DailyTarotWeb.HomeLive do
         socket
       end
 
-    new_socket =
-      if connected?(new_socket) do
-        new_socket
-        |> assign(is_loading: false)
-      else
-        socket
-      end
-
     {:noreply, new_socket}
   end
 
@@ -127,12 +119,29 @@ defmodule DailyTarotWeb.HomeLive do
           |> push_event("localStorage.clear", %{key: socket.assigns.storage_key})
       end
 
+    socket =
+      if connected?(socket) do
+        socket
+        |> assign(is_loading: false)
+      else
+        socket
+      end
+
     {:noreply, socket}
   end
 
   def handle_event("restore_settings", _token_data, socket) do
     # No expected token data received from the client
     Logger.debug("No LiveView SessionStorage state to restore")
+
+    socket =
+      if connected?(socket) do
+        socket
+        |> assign(is_loading: false)
+      else
+        socket
+      end
+
     {:noreply, socket}
   end
 

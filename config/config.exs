@@ -55,14 +55,29 @@ config :esbuild,
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
 
+config :dart_sass,
+  version: "1.61.0",
+  default: [
+    args: ~w(css/index.scss ../priv/static/assets/_extra.css),
+    cd: Path.expand("../assets", __DIR__)
+  ]
+
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.4.0",
-  daily_tarot: [
+  app: [
     args: ~w(
       --config=tailwind.config.js
       --input=css/app.css
       --output=../priv/static/assets/app.css
+    ),
+    cd: Path.expand("../assets", __DIR__)
+  ],
+  extra: [
+    args: ~w(
+      --config=tailwind.config.js
+      --input=../priv/static/assets/_extra.css
+      --output=../priv/static/assets/extra.css
     ),
     cd: Path.expand("../assets", __DIR__)
   ]

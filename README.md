@@ -19,7 +19,7 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 ## TODO
 
-* [ ] Add dark theme and update default styles
+* [x] Add dark theme and update default styles
 * [ ] Dynamic translation
 * [ ] Use prompts for updating contents
-* [ ] Self-aware date and time
+* [x] Self-aware date and time

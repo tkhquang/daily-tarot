@@ -25,7 +25,7 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
     ]}>
       <div
         class={[
-          "relative preserve-3d w-full h-full duration-1000 shadow-md",
+          "relative preserve-3d w-full h-full duration-1000",
           classes("rotate-y-180": @is_flipped_card)
         ]}
         data-index={@index}
@@ -33,13 +33,16 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
         phx-value-card_number={@card_number}
         phx-value-index={@index}
       >
-        <.live_component
-          module={FlipCardImage}
-          card_number={:preview}
-          id={"back-#{@index}"}
-          orientation={@orientation}
-        />
-        <div class="absolute rotate-y-180 backface-hidden w-full h-full bg-gray-100 overflow-hidden">
+        <div class="absolute backface-hidden w-full h-full shadow-md rounded md:rounded-lg overflow-hidden">
+          <.live_component
+            module={FlipCardImage}
+            card_number={:preview}
+            orientation={@orientation}
+            id={"back-#{@index}"}
+          />
+        </div>
+        
+        <div class="absolute rotate-y-180 backface-hidden w-full h-full bg-gray-100 shadow-md rounded md:rounded-lg overflow-hidden">
           <.live_component
             module={FlipCardImage}
             card_number={@card_number}

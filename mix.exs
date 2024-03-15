@@ -60,7 +60,8 @@ defmodule DailyTarot.MixProject do
       {:bandit, "~> 1.2"},
       {:oban, "~> 2.17"},
       {:tzdata, "~> 1.1"},
-      {:uuid, "~> 1.1"}
+      {:uuid, "~> 1.1"},
+      {:dart_sass, "~> 0.7", runtime: Mix.env() == :dev}
     ]
   end
 
@@ -77,9 +78,11 @@ defmodule DailyTarot.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind daily_tarot", "esbuild daily_tarot"],
+      "assets.build": ["sass default", "tailwind app", "tailwind extra", "esbuild daily_tarot"],
       "assets.deploy": [
-        "tailwind daily_tarot --minify",
+        "sass default --no-source-map --style=compressed",
+        "tailwind app --minify",
+        "tailwind extra --minify",
         "esbuild daily_tarot --minify",
         "phx.digest"
       ]

@@ -1,0 +1,28 @@
+//- BASE
+// @import "tailwindcss/base";
+// Any of my own custom base styles go here
+@import "variables";
+@import "base";
+//- BASE
+
+//- COMPONENTS
+// @import "tailwindcss/components";
+// Any of my own custom component styles go here
+@import "components";
+//- COMPONENTS
+
+//- UTILITIES
+// @import "tailwindcss/utilities";
+// Any of my own custom utilities go here
+@import "utils";
+@import "code";
+@import "pagination";
+//- UTILITIES
+
+//- THIRD PARTY
+// ..
+//- THIRD PARTY
+
+//- OVERRIDES
+@import "overrides";
+//- OVERRIDES
