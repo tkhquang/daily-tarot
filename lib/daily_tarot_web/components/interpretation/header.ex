@@ -8,15 +8,17 @@ defmodule DailyTarotWeb.Interpretation.Header do
 
   def header(assigns) do
     ~H"""
-    <h1
+    <div
       class={[
-        "text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl text-center",
+        "text-center",
         @class
       ]}
       {@rest}
     >
-      <%= @render_card_info.name %>
-    </h1>
+      <h1>
+        <%= @render_card_info.name %>
+      </h1>
+    </div>
     """
   end
 end

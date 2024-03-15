@@ -15,10 +15,10 @@ defmodule DailyTarotWeb.Interpretation do
   def interpretation(assigns) do
     ~H"""
     <div {@rest}>
-      <.header render_card_info={@render_card_info} class="my-8" />
+      <.header render_card_info={@render_card_info} class="!mt-14 typography" />
       <.keyword_list render_card_info={@render_card_info} class="my-4" />
-      <.description render_card_info={@render_card_info} class="my-4" />
-      <.affirmation_list render_card_info={@render_card_info} class="my-4" />
+      <.description render_card_info={@render_card_info} class="my-4 typography" />
+      <.affirmation_list render_card_info={@render_card_info} class="my-4 typography" />
     </div>
     """
   end

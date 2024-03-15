@@ -1,5 +1,5 @@
 <div :if={not @is_loading} class="container">
-  <div class="my-4">
+  <div class="my-4 typography">
     <ol class="mx-4 md:mx-8 list-decimal">
       <li>Regain calmness, take a deep breath, close your eyes for about 10 seconds.</li>
 
@@ -9,7 +9,7 @@
     </ol>
   </div>
 
-  <ul class="my-4 grid grid-cols-3 gap-4">
+  <ul class="my-4 grid grid-cols-3 md:grid-cols-6 gap-4">
     <%= for {card, index} <- @random_cards |> Enum.with_index() do %>
       <li class="">
         <.flip_card card={card} index={index} is_flipped={@flipped_card != nil} flipped_card={@flipped_card} />
