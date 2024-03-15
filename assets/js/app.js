@@ -38,6 +38,16 @@ let liveSocket = new LiveSocket("/live", Socket, {
     timezone_offset: -(new Date().getTimezoneOffset() / 60),
   },
   hooks: Hooks,
+  dom: {
+    // Guarantee that some attributes set on the client-side are kept intact:
+    onBeforeElUpdated(from, to) {
+      for (const attr of from.attributes) {
+        if (attr.name.startsWith("data-js-")) {
+          to.setAttribute(attr.name, attr.value);
+        }
+      }
+    },
+  },
 });
 
 // Show progress bar on live navigation and form submits

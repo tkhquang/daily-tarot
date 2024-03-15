@@ -2,7 +2,7 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
   @moduledoc false
   use Phoenix.Component
 
-  import DailyTarotUtils.WebHelper
+  import DailyTarotUtils.WebHelper, only: [classes: 1]
   alias DailyTarotWeb.TarotCard.FlipCardImage
 
   def flip_card(assigns) do
@@ -33,9 +33,19 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
         phx-value-card_number={@card_number}
         phx-value-index={@index}
       >
-        <.live_component module={FlipCardImage} card_number={:preview} id={"back-#{@index}"} />
+        <.live_component
+          module={FlipCardImage}
+          card_number={:preview}
+          id={"back-#{@index}"}
+          orientation={@orientation}
+        />
         <div class="absolute rotate-y-180 backface-hidden w-full h-full bg-gray-100 overflow-hidden">
-          <.live_component module={FlipCardImage} card_number={@card_number} id={"front-#{@index}"} />
+          <.live_component
+            module={FlipCardImage}
+            card_number={@card_number}
+            orientation={@orientation}
+            id={"front-#{@index}"}
+          />
         </div>
       </div>
     </div>

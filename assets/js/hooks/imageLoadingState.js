@@ -1,4 +1,4 @@
-const imageHooks = {
+const imageLoadingState = {
   mounted() {
     this.setLoading(!this.el.complete);
 
@@ -11,7 +11,7 @@ const imageHooks = {
   },
 
   setLoading(value) {
-    this.el.setAttribute("data-loading", value);
+    this.el.setAttribute("data-js-loading", value);
     if (!value) {
       this.pushEvent("imageLoadingState.loaded", {
         id: this.el.getAttribute("id"),
@@ -20,4 +20,4 @@ const imageHooks = {
   },
 };
 
-export default imageHooks;
+export default imageLoadingState;
