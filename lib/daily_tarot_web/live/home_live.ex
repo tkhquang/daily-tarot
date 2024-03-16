@@ -14,15 +14,30 @@ defmodule DailyTarotWeb.HomeLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, cards} = Json.get_json("assets/json/cards.json")
-
     socket =
-      assign(socket,
-        cards: cards,
-        random_cards: Card.get_random_cards(cards, 6),
-        flipped_card: nil,
-        is_loading: true
-      )
+      case Json.get_json("assets/json/cards.json") do
+        {:ok, cards} ->
+          socket =
+            assign(socket,
+              cards: cards,
+              random_cards: Card.get_random_cards(cards, 6),
+              flipped_card: nil,
+              is_loading: true
+            )
+
+          socket
+
+        _ ->
+          socket =
+            assign(socket,
+              cards: [],
+              random_cards: Card.get_random_cards([], 6),
+              flipped_card: nil,
+              is_loading: true
+            )
+
+          socket
+      end
 
     {:ok, socket}
   end

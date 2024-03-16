@@ -9,6 +9,22 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
+## Developmemt
+
+Copy an example .env file because the real one is git ignored:
+
+```bash
+cp .env.example .env
+```
+
+The first time you run this it's going to take 5-10 minutes depending on your internet connection speed and computer's hardware specs. That's because it's going to download a few Docker images and build the Elixir + Yarn dependencies.
+
+```bash
+docker compose up -d
+docker compose exec app sh
+mix ecto.migrate
+```
+
 ## Learn more
 
 * Official website: <https://www.phoenixframework.org/>

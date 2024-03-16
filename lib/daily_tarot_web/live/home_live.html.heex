@@ -2,13 +2,13 @@
   <div class="typography my-4">
     <ol class="mx-4 list-decimal md:mx-8">
       <li>Regain calmness, take a deep breath, close your eyes for about 10 seconds.</li>
-      
+
       <li>Answer the question: 'What do you want to know?.'</li>
-      
+
       <li>Choose 1 of the 6 cards below and see the result.</li>
     </ol>
   </div>
-  
+
   <ul class="my-4 grid grid-cols-3 gap-4 md:grid-cols-6">
     <%= for {card, index} <- @random_cards |> Enum.with_index() do %>
       <li class="">
@@ -24,7 +24,7 @@
    <.interpretation :if={@flipped_card != nil} render_card_info={@render_card_info} />
   <div :if={@flipped_card != nil} class="my-4 flex w-full justify-center space-x-2">
     <.button phx-click="pick_another_card">Pick another card</.button>
-    
+
     <.button phx-click="shuffle_the_cards">Shuffle the cards</.button>
   </div>
 </div>
