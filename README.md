@@ -23,3 +23,4 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 * [ ] Dynamic translation
 * [ ] Use prompts for updating contents
 * [x] Self-aware date and time
+* [ ] Dockerization

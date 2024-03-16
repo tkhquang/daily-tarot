@@ -61,7 +61,8 @@ defmodule DailyTarot.MixProject do
       {:oban, "~> 2.17"},
       {:tzdata, "~> 1.1"},
       {:uuid, "~> 1.1"},
-      {:dart_sass, "~> 0.7", runtime: Mix.env() == :dev}
+      {:dart_sass, "~> 0.7", runtime: Mix.env() == :dev},
+      {:tailwind_formatter, "~> 0.4.0", only: [:dev, :test], runtime: false}
     ]
   end
 
