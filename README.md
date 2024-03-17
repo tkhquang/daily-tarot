@@ -47,7 +47,7 @@ asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
 asdf install
 ```
 
-After installing `erlang` and `elixir` with `asdf`, we need to define the versions globally so that vscode would properly
+After installing `erlang` and `elixir` with `asdf`, we need to define the versions globally so that vscode would work properly
 
 ```sh
 asdf global elixir 1.16.2-otp-26
