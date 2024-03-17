@@ -63,11 +63,14 @@ mix archive.install hex phx_new
 
 ## TODO
 
+* [x] Add simple LQIP
 * [x] Add dark theme and update default styles
 * [ ] Dynamic translation
 * [ ] Use prompts for updating contents
 * [x] Self-aware date and time
-* [ ] Dockerization
+* [x] Dockerization
+* [ ] Add TypeScript
+* [ ] Add Svelte
 
 ## Learn more
 
