@@ -8,7 +8,7 @@ defmodule DailyTarotWeb.Interpretation.KeywordList do
 
   def keyword_list(assigns) do
     ~H"""
-    <ul class={["flex flex-wrap", @class]} {@rest}>
+    <ul class={["flex flex-wrap justify-center", @class]} {@rest}>
       <%= for {keyword, _index} <- @render_card_info.keywords |> Enum.with_index() do %>
         <li class="secondary m-2 rounded px-2.5 py-2">
           <span class="font-medium capitalize">
