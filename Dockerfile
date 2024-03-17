@@ -11,9 +11,13 @@ FROM hexpm/elixir:$ELIXIR_VERSION-erlang-$ERLANG_VERSION-alpine-$ALPINE_VERSION 
 RUN apk add --update --no-cache git build-base
 RUN mkdir /app
 WORKDIR /app
-ENV MIX_ENV "dev"
+ENV MIX_ENV="dev"
 RUN mix do local.hex --force, local.rebar --force
 COPY mix.exs mix.lock ./
+# Resolve eheap_alloc: Cannot allocate x bytes of memory (of type "heap_frag").
+# error on Apply chip
+RUN mix archive.install github hexpm/hex branch latest --force
+RUN mix  archive.install hex phx_new
 RUN if [ "${MIX_ENV}" = "dev" ]; then \
   mix deps.get; else mix deps.get --only "${MIX_ENV}"; fi
 # For phoenix_live_reload to work
@@ -70,10 +74,12 @@ COPY assets assets
 COPY --from=build-node-assets /app/assets assets
 COPY priv/static/assets priv/static/assets
 # Add glibc in order to use dart-sass
-RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
-RUN wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.34-r0/glibc-2.34-r0.apk
-RUN apk add --force-overwrite glibc-2.34-r0.apk
-
+ENV GLIBC_VERSION=2.34-r0
+RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
+  wget -q -O /tmp/glibc.apk https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk && \
+  apk add --force-overwrite /tmp/glibc.apk && \
+  rm -rf /tmp/glibc.apk
+RUN apk add --no-cache gcompat
 # Compile the release
 RUN mix compile
 

@@ -57,8 +57,8 @@ asdf global erlang 26.2.3
 Compiling Hex from scratch on the OTP version to bypass the memory bug on ElixirLS:
 
 ```sh
-mix archive.install github hexpm/hex branch latest
-mix archive.install hex phx_new
+mix archive.install github hexpm/hex branch latest --force
+mix  archive.install hex phx_new
 ```
 
 ## Learn more
