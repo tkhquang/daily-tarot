@@ -79,11 +79,10 @@ defmodule DailyTarot.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["sass default", "tailwind app", "tailwind extra", "esbuild daily_tarot"],
+      "assets.build": ["sass default", "tailwind app", "esbuild daily_tarot"],
       "assets.deploy": [
         "sass default --no-source-map --style=compressed",
         "tailwind app --minify",
-        "tailwind extra --minify",
         "esbuild daily_tarot --minify",
         "phx.digest"
       ]

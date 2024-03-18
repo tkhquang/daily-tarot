@@ -32,8 +32,7 @@ config :daily_tarot, DailyTarotWeb.Endpoint,
       :install_and_run,
       [:default, ~w(--embed-source-map --source-map-urls=absolute --watch)]
     },
-    tailwind: {Tailwind, :install_and_run, [:app, ~w(--watch)]},
-    tailwind_extra: {Tailwind, :install_and_run, [:extra, ~w(--watch)]}
+    tailwind: {Tailwind, :install_and_run, [:app, ~w(--watch)]}
   ]
 
 # ## SSL Support

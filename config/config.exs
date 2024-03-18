@@ -72,14 +72,6 @@ config :tailwind,
       --output=../priv/static/assets/app.css
     ),
     cd: Path.expand("../assets", __DIR__)
-  ],
-  extra: [
-    args: ~w(
-      --config=tailwind.config.js
-      --input=dist/_extra.css
-      --output=../priv/static/assets/extra.css
-    ),
-    cd: Path.expand("../assets", __DIR__)
   ]
 
 # Configures Elixir's Logger
