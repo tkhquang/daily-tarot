@@ -3,7 +3,6 @@ defmodule DailyTarotWeb.HomeLive do
 
   import DailyTarotWeb.Interpretation
   import DailyTarotWeb.TarotCard.FlipCard
-  import DailyTarotUtils.WebHelper
 
   alias DailyTarot.Card
   alias DailyTarotUtils.Json
@@ -22,7 +21,11 @@ defmodule DailyTarotWeb.HomeLive do
               cards: cards,
               random_cards: Card.get_random_cards(cards, 6),
               flipped_card: nil,
-              is_loading: true
+              is_loading: true,
+              locale: nil,
+              timezone: nil,
+              timezone_offset: nil,
+              color_mode: nil
             )
 
           socket
@@ -33,7 +36,11 @@ defmodule DailyTarotWeb.HomeLive do
               cards: [],
               random_cards: Card.get_random_cards([], 6),
               flipped_card: nil,
-              is_loading: true
+              is_loading: true,
+              locale: nil,
+              timezone: nil,
+              timezone_offset: nil,
+              color_mode: nil
             )
 
           socket
@@ -53,14 +60,16 @@ defmodule DailyTarotWeb.HomeLive do
         %{
           "locale" => locale,
           "timezone" => timezone,
-          "timezone_offset" => timezone_offset
+          "timezone_offset" => timezone_offset,
+          "color_mode" => color_mode
         } = get_connect_params(socket)
 
         socket
         |> assign(
           locale: locale,
           timezone: timezone,
-          timezone_offset: timezone_offset
+          timezone_offset: timezone_offset,
+          color_mode: color_mode
         )
       else
         socket
@@ -230,5 +239,20 @@ defmodule DailyTarotWeb.HomeLive do
     IO.inspect({"Image loaded", session})
 
     {:noreply, socket}
+  end
+
+  @impl true
+  def handle_event("toggle_theme", _session, socket) do
+    socket =
+      socket
+      |> push_event("darkThemeToggle", %{})
+
+    {:noreply, socket}
+  end
+
+  @impl true
+  def handle_event("darkThemeToggle.changed", %{"mode" => mode} = session, socket) do
+    IO.inspect({"Theme change", session})
+    {:noreply, socket |> assign(:color_mode, mode)}
   end
 end

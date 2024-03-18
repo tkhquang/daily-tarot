@@ -23,9 +23,9 @@
   </ul>
    <.interpretation :if={@flipped_card != nil} render_card_info={@render_card_info} />
   <div :if={@flipped_card != nil} class="my-4 flex w-full justify-center space-x-2">
-    <.button phx-click="pick_another_card">Pick another card</.button>
+    <.button id={UUID.uuid4()} phx-click="pick_another_card" phx-hook="ScrollToTop">Pick another card</.button>
 
-    <.button phx-click="shuffle_the_cards">Shuffle the cards</.button>
+    <.button id={UUID.uuid4()} phx-click="shuffle_the_cards" phx-hook="ScrollToTop">Shuffle the cards</.button>
   </div>
 </div>
 

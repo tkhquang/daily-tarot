@@ -1,9 +1,8 @@
 defmodule DailyTarotWeb.TarotCard.FlipCardImage do
   @moduledoc false
-  use Phoenix.LiveComponent
+  use DailyTarotWeb, :live_component
 
   alias DailyTarot.Card
-  import DailyTarotUtils.WebHelper, only: [classes: 1]
 
   def render(assigns) do
     ~H"""

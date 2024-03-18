@@ -86,6 +86,7 @@ defmodule DailyTarotWeb do
       # Core UI components and translation
       import DailyTarotWeb.CoreComponents
       import DailyTarotWeb.Gettext
+      import DailyTarotUtils.WebHelper
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
