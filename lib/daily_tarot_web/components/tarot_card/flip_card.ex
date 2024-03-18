@@ -19,12 +19,12 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
 
     ~H"""
     <div class={[
-      "aspect-[1114/1834] group perspective bg-transparent",
+      "group perspective w-full bg-transparent",
       if(@is_flipped, do: "cursor-not-allowed", else: "cursor-pointer")
     ]}>
       <div
         class={[
-          "preserve-3d relative h-full w-full duration-1000",
+          "pb-[calc(100%*1834/1114)] preserve-3d relative h-full w-full duration-1000",
           classes("rotate-y-180": @is_flipped_card)
         ]}
         data-index={@index}
