@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "types": ["phoenix"],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["ES2021", "dom", "dom.iterable"],
+    "target": "ES2021"
+  },
+  "exclude": ["node_modules"]
+}

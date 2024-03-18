@@ -23,8 +23,21 @@ import { LiveSocket } from "phoenix_live_view";
 import topbar from "../vendor/topbar";
 import LocalStateStore from "./hooks/localStateStore";
 import ImageLoadingState from "./hooks/imageLoadingState";
+import DarkThemeToggle from "./hooks/darkThemeToggle";
+import ScrollToTop from "./hooks/scrollToTop";
 
-let Hooks = { LocalStateStore, ImageLoadingState };
+import { SocketOptions } from "phoenix_live_view";
+
+let Hooks = {
+  LocalStateStore,
+  ImageLoadingState,
+  DarkThemeToggle,
+  ScrollToTop,
+};
+
+interface MySocketOptions extends SocketOptions {
+  longPollFallbackMs: number;
+}
 
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")
@@ -36,11 +49,12 @@ let liveSocket = new LiveSocket("/live", Socket, {
     locale: Intl.NumberFormat().resolvedOptions().locale,
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     timezone_offset: -(new Date().getTimezoneOffset() / 60),
+    color_mode: window.__theme,
   },
   hooks: Hooks,
   dom: {
     // Guarantee that some attributes set on the client-side are kept intact:
-    onBeforeElUpdated(from, to) {
+    onBeforeElUpdated(from, to): any {
       for (const attr of from.attributes) {
         if (attr.name.startsWith("data-js-")) {
           to.setAttribute(attr.name, attr.value);
@@ -48,7 +62,7 @@ let liveSocket = new LiveSocket("/live", Socket, {
       }
     },
   },
-});
+} as MySocketOptions);
 
 // Show progress bar on live navigation and form submits
 topbar.config({ barColors: { 0: "#29d" }, shadowColor: "rgba(0, 0, 0, .3)" });
