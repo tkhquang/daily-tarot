@@ -3,8 +3,7 @@
   "description": " ",
   "license": "MIT",
   "scripts": {
-    "deploy": "cd .. && mix assets.deploy && rm -f _build/esbuild",
-    "update": "pnpm up --latest --interactive"
+    "deploy": "cd .. && (mix assets.deploy || true) && rm -f _build/esbuild"
   },
   "engines": {
     "node": "^20.0.0",
