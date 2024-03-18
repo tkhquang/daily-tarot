@@ -58,7 +58,7 @@ config :esbuild,
 config :dart_sass,
   version: "1.72.0",
   default: [
-    args: ~w(css/index.scss ../priv/static/assets/_extra.css),
+    args: ~w(css/index.scss dist/_extra.css),
     cd: Path.expand("../assets", __DIR__)
   ]
 
@@ -76,7 +76,7 @@ config :tailwind,
   extra: [
     args: ~w(
       --config=tailwind.config.js
-      --input=../priv/static/assets/_extra.css
+      --input=dist/_extra.css
       --output=../priv/static/assets/extra.css
     ),
     cd: Path.expand("../assets", __DIR__)

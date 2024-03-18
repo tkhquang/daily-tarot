@@ -8,8 +8,9 @@ defmodule DailyTarotWeb.TarotCard.FlipCardImage do
     ~H"""
     <div class="overflow-hidden">
       <div
+        id={"skeleton-" <> @id}
         role="status"
-        class="absolute inset-0 animate-pulse space-y-8 rtl:space-x-reverse md:flex md:items-center md:space-x-8 md:space-y-0"
+        class="absolute inset-0 animate-pulse space-y-8 [&:has(~img:not([data-js-loading='true']))]:hidden [&[data-js-image-loading='false']]:hidden rtl:space-x-reverse md:flex md:items-center md:space-x-8 md:space-y-0"
       >
         <div class="surface flex h-full w-full items-center justify-center rounded">
           <svg
@@ -27,7 +28,7 @@ defmodule DailyTarotWeb.TarotCard.FlipCardImage do
       <img
         id={@id}
         class={[
-          "lqip-image [&[data-js-loading='false']]:lqip-image__loaded [&[data-js-loading='false']~img]:lqip-placeholder__image-loaded [&[data-js-loading='true']]:text-[0px]",
+          "lqip-image [&:not([data-js-loading='false'])]:text-[0px] [&[data-js-loading='false']]:lqip-image__loaded [&[data-js-loading='false']]:text-white [&[data-js-loading='false']~img]:lqip-placeholder__image-loaded",
           classes("rotate-180": @orientation == :reversed)
         ]}
         src={Card.get_image_url(@card_number)}
@@ -37,7 +38,7 @@ defmodule DailyTarotWeb.TarotCard.FlipCardImage do
       <img
         id={"placeholder-" <> @id}
         class={[
-          "lqip-placeholder pointer-events-none absolute inset-0 transform-gpu [&[data-js-loading='true']]:text-[0px]",
+          "lqip-placeholder pointer-events-none absolute inset-0 transform-gpu [&:not([data-js-loading='false'])]:text-[0px]",
           classes("rotate-180": @orientation == :reversed)
         ]}
         src={Card.get_image_url(@card_number, :placeholder)}

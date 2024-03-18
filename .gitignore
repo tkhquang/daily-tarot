@@ -37,3 +37,6 @@ npm-debug.log
 
 # Environments
 .env
+
+# Dev build assets
+/assets/dist/*

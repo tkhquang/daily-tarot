@@ -1,20 +1,25 @@
 const imageLoadingState = {
   mounted() {
-    this.setLoading(!this.el.complete);
+    this.setImageLoadingState(!this.el.complete);
 
     this.el.addEventListener("load", () => {
-      this.setLoading(false);
+      this.setImageLoadingState(false);
     });
     this.el.addEventListener("error", () => {
-      this.setLoading(false);
+      this.setImageLoadingState(false);
     });
   },
 
-  setLoading(value) {
+  setImageLoadingState(value) {
+    const id = this.el.getAttribute("id");
+    const skeleton = document.getElementById(`skeleton-${id}`);
+    const placeholder = document.getElementById(`placeholder-${id}`);
     this.el.setAttribute("data-js-loading", value);
+    skeleton?.setAttribute("data-js-image-loading", value);
+    placeholder?.setAttribute("data-js-image-loading", value);
     if (!value) {
       this.pushEvent("imageLoadingState.loaded", {
-        id: this.el.getAttribute("id"),
+        id,
       });
     }
   },

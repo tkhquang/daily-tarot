@@ -83,6 +83,54 @@
   }
 }
 
+@layer utilities {
+  :root {
+    --img-blur: 42px;
+    --img-scale: 1.5;
+    --img-transition-duration: 1.2s;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .lqip-image {
+    filter: blur(var(--img-blur));
+    transition: var(--img-transition-duration) ease;
+    transition-property: filter;
+    will-change: filter;
+    &__loaded {
+      filter: blur(0);
+    }
+  }
+
+  .lqip-placeholder {
+    filter: blur(var(--img-blur));
+    transform: scale(var(--img-scale));
+    opacity: 1;
+    transition: var(--img-transition-duration) ease;
+    transition-property: filter, opacity, transform;
+    will-change: filter, transform;
+    &__image-loaded {
+      filter: blur(0);
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+}
+
 @keyframes spin {
   to {
     transform: rotate(1turn);

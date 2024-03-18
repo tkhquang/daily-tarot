@@ -2,9 +2,5 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* This file is for your main application CSS */
-:root {
-  --img-blur: 42px;
-  --img-scale: 1.5;
-  --img-transition-duration: 1.2s;
-}
+/* Styles complied from SCSS */
+@import "../dist/_extra.css";
