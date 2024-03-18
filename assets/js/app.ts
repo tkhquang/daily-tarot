@@ -25,6 +25,7 @@ import LocalStateStore from "./hooks/localStateStore";
 import ImageLoadingState from "./hooks/imageLoadingState";
 import DarkThemeToggle from "./hooks/darkThemeToggle";
 import ScrollToTop from "./hooks/scrollToTop";
+import WebConsole from "./hooks/webConsole";
 
 import { SocketOptions } from "phoenix_live_view";
 
@@ -33,6 +34,7 @@ let Hooks = {
   ImageLoadingState,
   DarkThemeToggle,
   ScrollToTop,
+  WebConsole,
 };
 
 interface MySocketOptions extends SocketOptions {

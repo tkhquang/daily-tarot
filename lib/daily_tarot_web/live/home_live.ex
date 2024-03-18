@@ -255,4 +255,10 @@ defmodule DailyTarotWeb.HomeLive do
     IO.inspect({"Theme change", session})
     {:noreply, socket |> assign(:color_mode, mode)}
   end
+
+  @impl true
+  def handle_event("web_console", session, socket) do
+    IO.inspect({"Web console", session})
+    {:noreply, socket |> push_event("console.log", session)}
+  end
 end
