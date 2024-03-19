@@ -25,18 +25,14 @@ RUN if [ "${MIX_ENV}" = "dev" ]; then \
   apk add inotify-tools bash; fi
 RUN mkdir deps-assets && find deps -name package.json -mindepth 2 -maxdepth 2 | while read i; do cp -R $(dirname $i) deps-assets; done
 
-FROM alpine:$ALPINE_VERSION as extract-assets-from-lib
-RUN mkdir -p /app/lib
-WORKDIR /app
-COPY lib/daily_tarot_web lib/daily_tarot_web
-RUN find lib/daily_tarot_web -type f ! \( -name "*ex" \) -print | xargs rm -f
-RUN find lib/daily_tarot_web -type d -empty | xargs -r rmdir -p --ignore-fail-on-non-empty
-
 # 2a. Fetch Node modules -> compile Node assets
 FROM node:$NODE_VERSION-alpine as build-node-assets
 RUN mkdir /app
 WORKDIR /app
 RUN mkdir /app/assets
+# For Tailwind JIT to keep track of the template in the html template
+RUN mkdir /app/lib
+COPY lib/daily_tarot_web lib/daily_tarot_web
 COPY assets/package.json assets/yarn.lock ./assets/
 COPY --from=fetch-elixir-deps /app/deps-assets ./deps
 RUN yarn --cwd assets install --immutable
