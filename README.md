@@ -70,6 +70,7 @@ mix archive.install hex phx_new
 
 ## TODO
 
+* [ ] Optimistic UI
 * [x] Add simple LQIP
 * [x] Add dark theme and update default styles
 * [ ] Dynamic translation
