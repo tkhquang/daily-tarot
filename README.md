@@ -17,6 +17,13 @@ Copy an example `.env` file because the real one is git ignored:
 cp .env.example .env
 ```
 
+Install assets packages
+
+```sh
+cd assets && yarn install
+cd ..
+```
+
 The first time you run this it's going to take 5-10 minutes depending on your internet connection speed and computer's hardware specs. That's because it's going to download a few Docker images and build the Elixir + Yarn dependencies.
 
 ```sh
@@ -40,7 +47,7 @@ export KERL_CONFIGURE_OPTIONS="--disable-debug --disable-silent-rules --without-
 ```
 
 ```sh
-asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
@@ -69,7 +76,7 @@ mix archive.install hex phx_new
 * [ ] Use prompts for updating contents
 * [x] Self-aware date and time
 * [x] Dockerization
-* [ ] Add TypeScript
+* [x] Add TypeScript
 * [ ] Add Svelte
 
 ## Learn more

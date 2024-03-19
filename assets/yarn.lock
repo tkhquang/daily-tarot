@@ -13,6 +13,3 @@
   integrity sha512-9mq6zRZfCtY8f4Kiu9ca0YodlNoL5kPfz6AO8AMIylftoT59re5+l5BxPISt/NJXyj1S/gRJmwpHgyVsyEk8cg==
   dependencies:
     "@types/phoenix" "*"
-
-"phoenix_typed_hook@file:../deps/phoenix_typed_hook":
-  version "0.18.2"
