@@ -40,8 +40,8 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
             id={"back-#{@index}"}
           />
         </div>
-
-        <div class="rotate-y-180 backface-hidden absolute h-full w-full overflow-hidden rounded bg-gray-100 shadow-md md:rounded-lg">
+        
+        <div class="rotate-y-180 backface-hidden absolute h-full w-full overflow-hidden rounded shadow-md md:rounded-lg">
           <.live_component
             module={FlipCardImage}
             card_number={@card_number}

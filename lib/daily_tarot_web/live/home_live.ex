@@ -240,6 +240,11 @@ defmodule DailyTarotWeb.HomeLive do
   end
 
   @impl true
+  def handle_event("imageLoadingState.error", %{"id" => _id} = _session, socket) do
+    {:noreply, socket}
+  end
+
+  @impl true
   def handle_event("toggle_theme", _session, socket) do
     socket =
       socket
