@@ -235,9 +235,7 @@ defmodule DailyTarotWeb.HomeLive do
   end
 
   @impl true
-  def handle_event("imageLoadingState.loaded", %{"id" => _id} = session, socket) do
-    IO.inspect({"Image loaded", session})
-
+  def handle_event("imageLoadingState.loaded", %{"id" => _id} = _session, socket) do
     {:noreply, socket}
   end
 
@@ -251,14 +249,12 @@ defmodule DailyTarotWeb.HomeLive do
   end
 
   @impl true
-  def handle_event("darkThemeToggle.changed", %{"mode" => mode} = session, socket) do
-    IO.inspect({"Theme change", session})
+  def handle_event("darkThemeToggle.changed", %{"mode" => mode} = _session, socket) do
     {:noreply, socket |> assign(:color_mode, mode)}
   end
 
   @impl true
   def handle_event("web_console", session, socket) do
-    IO.inspect({"Web console", session})
     {:noreply, socket |> push_event("console.log", session)}
   end
 end
