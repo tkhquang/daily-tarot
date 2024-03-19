@@ -79,7 +79,7 @@ RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/s
   wget -q -O /tmp/glibc.apk https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk && \
   apk add --force-overwrite /tmp/glibc.apk && \
   rm -rf /tmp/glibc.apk
-RUN apk add --no-cache gcompat
+RUN (apk add --no-cache gcompat || true)
 # Compile the release
 RUN mix compile
 
