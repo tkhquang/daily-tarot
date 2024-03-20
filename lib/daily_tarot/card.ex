@@ -1,8 +1,23 @@
 defmodule DailyTarot.Card do
   @orientations ~w(upright reversed)a
 
+  @mode :prod
+
   defp imgix_url() do
     Application.fetch_env!(:daily_tarot, DailyTarot)[:imgix_url]
+  end
+
+  defp put_dev_query(query) do
+    case @mode == :dev do
+      true ->
+        query
+        |> Map.merge(%{
+          "hash" => UUID.uuid4()
+        })
+
+      false ->
+        query
+    end
   end
 
   def get_card_by_number(cards, number) do
@@ -22,18 +37,56 @@ defmodule DailyTarot.Card do
     end)
   end
 
-  def get_image_url(:preview),
-    do: "#{imgix_url()}/cards/78.webp?&q=80&dpr=0.5&auto=format"
+  def get_image_url(:preview) do
+    query =
+      %{
+        "q" => 80,
+        "dpr" => 0.5,
+        "auto" => "format"
+      }
+      |> put_dev_query()
 
-  def get_image_url(number) do
-    "#{imgix_url()}/cards/#{number}.webp?&q=80&dpr=0.5&auto=format"
+    "#{imgix_url()}/cards/78.webp?#{URI.encode_query(query)}"
   end
 
-  def get_image_url(:preview, :placeholder),
-    do: "#{imgix_url()}/cards/78.webp?blur=200&px=16&q=75&dpr=0.5&auto=format"
+  def get_image_url(number) do
+    query =
+      %{
+        "q" => 80,
+        "dpr" => 0.5,
+        "auto" => "format"
+      }
+      |> put_dev_query()
+
+    "#{imgix_url()}/cards/#{number}.webp?#{URI.encode_query(query)}"
+  end
+
+  def get_image_url(:preview, :placeholder) do
+    query =
+      %{
+        "blur" => 200,
+        "px" => 16,
+        "q" => 75,
+        "dpr" => 0.5,
+        "auto" => "format"
+      }
+      |> put_dev_query()
+
+    "#{imgix_url()}/cards/78.webp?#{URI.encode_query(query)}"
+  end
 
   def get_image_url(number, :placeholder) do
-    "#{imgix_url()}/cards/#{number}.webp?blur=200&px=16&q=75&dpr=0.5&auto=format"
+    query =
+      %{
+        "blur" => 200,
+        "px" => 16,
+        "q" => 75,
+        "dpr" => 0.5,
+        "auto" => "format"
+      }
+      |> put_dev_query()
+
+    "#{imgix_url()}/cards/#{number}.webp?#{URI.encode_query(query)}"
   end
 
   def get_name(%{
