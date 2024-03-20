@@ -170,23 +170,55 @@ defmodule DailyTarotWeb.HomeLive do
   end
 
   @impl true
-  def handle_event("flip_card", %{"card_number" => card_number} = _session, socket) do
+  def handle_event(
+        "flip_card",
+        %{
+          "card_number" => card_number,
+          "index" => _index
+        } = _session,
+        socket
+      ) do
     card = Card.get_card_by_number(socket.assigns.random_cards, card_number)
+    flipped_card_number = (socket.assigns.flipped_card || %{}) |> Map.get("number")
 
     socket =
-      socket
-      |> assign(
-        flipped_card: card,
-        render_card_info: Card.get_render_info(card)
-      )
-      |> push_event("localStorage.store", %{
-        key: socket.assigns.storage_key,
-        data:
-          serialize_to_token(%{
-            random_cards: socket.assigns.random_cards,
-            flipped_card: card
-          })
-      })
+      case "#{card_number}" == "#{flipped_card_number}" do
+        true ->
+          socket =
+            socket
+            |> assign(
+              flipped_card: nil,
+              render_card_info: nil
+            )
+            |> push_event("localStorage.store", %{
+              key: socket.assigns.storage_key,
+              data:
+                serialize_to_token(%{
+                  random_cards: socket.assigns.random_cards,
+                  flipped_card: nil
+                })
+            })
+
+          socket
+
+        false ->
+          socket =
+            socket
+            |> assign(
+              flipped_card: card,
+              render_card_info: Card.get_render_info(card)
+            )
+            |> push_event("localStorage.store", %{
+              key: socket.assigns.storage_key,
+              data:
+                serialize_to_token(%{
+                  random_cards: socket.assigns.random_cards,
+                  flipped_card: card
+                })
+            })
+
+          socket
+      end
 
     {:noreply, socket}
   end
@@ -214,6 +246,8 @@ defmodule DailyTarotWeb.HomeLive do
   @impl true
   def handle_event("shuffle_the_cards", _session, socket) do
     new_random_cards = Card.get_random_cards(socket.assigns.cards, 6)
+
+    Process.sleep(1000)
 
     socket =
       socket

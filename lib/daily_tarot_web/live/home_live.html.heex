@@ -1,4 +1,4 @@
-<div :if={not @is_loading} class="container">
+<div :if={not @is_loading} class="container flex h-full w-full flex-1 flex-col">
   <div class="typography my-4">
     <ol class="mx-4 list-decimal md:mx-8">
       <li>Regain calmness, take a deep breath, close your eyes for about 10 seconds.</li>
@@ -21,11 +21,42 @@
       </li>
     <% end %>
   </ul>
-   <.interpretation :if={@flipped_card != nil} render_card_info={@render_card_info} />
-  <div :if={@flipped_card != nil} class="my-4 flex w-full justify-center space-x-2">
-    <.button id={UUID.uuid4()} phx-click="pick_another_card" phx-hook="ScrollToTop">Pick another card</.button>
 
-    <.button id={UUID.uuid4()} phx-click="shuffle_the_cards" phx-hook="ScrollToTop">Shuffle the cards</.button>
+  <div
+    id="interpretation-content"
+    class="group flex h-full w-full flex-1 flex-col items-center justify-center"
+  >
+    <div id="content" class="block group-[.phx-click-loading]:hidden">
+      <.interpretation :if={@flipped_card != nil} render_card_info={@render_card_info} />
+      <div :if={@flipped_card != nil} class="my-4 flex w-full justify-center space-x-2">
+        <.button
+          id={UUID.uuid4()}
+          phx-click={
+            JS.remove_class("rotate-y-180", to: ".card[data-selected='true']")
+            |> JS.push("pick_another_card")
+          }
+          phx-hook="ScrollToTop"
+        >
+          Pick another card
+        </.button>
+
+        <.button
+          id={UUID.uuid4()}
+          phx-click={
+            JS.remove_class("rotate-y-180",
+              to: ".card[data-selected='true']"
+            )
+            |> JS.push("shuffle_the_cards",
+              loading: "#interpretation-content"
+            )
+          }
+          phx-hook="ScrollToTop"
+        >
+          Shuffle the cards
+        </.button>
+      </div>
+    </div>
+    <div id="content-loading" class="hidden group-[.phx-click-loading]:block">Loading...</div>
   </div>
 </div>
 
