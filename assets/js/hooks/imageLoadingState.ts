@@ -8,10 +8,10 @@ const PLACEHOLDER_PREFIX = `placeholder-`;
 const ERROR_PREFIX = `error-`;
 
 const IMAGE_LOADING_ATTRIBUTE = "data-js-loading";
-const RELATIVE_IMAGE_LOADING_ATTRIBUTE = "data-js-image-loading";
+const IMAGE_RELATIVE_LOADING_ATTRIBUTE = "data-js-image-loading";
 
 const IMAGE_ERROR_ATTRIBUTE = "data-js-error";
-const RELATIVE_IMAGE_ERROR_ATTRIBUTE = "data-js-image-error";
+const IMAGE_RELATIVE_ERROR_ATTRIBUTE = "data-js-image-error";
 
 interface ImageLoadingState extends Partial<Omit<ViewHook, "el">> {
   el?: HTMLImageElement;
@@ -36,7 +36,7 @@ const imageLoadingState = {
     });
     placeholder?.addEventListener("load", () => {
       skeleton?.setAttribute(
-        RELATIVE_IMAGE_LOADING_ATTRIBUTE,
+        IMAGE_RELATIVE_LOADING_ATTRIBUTE,
         false.toString()
       );
     });
@@ -55,24 +55,24 @@ const imageLoadingState = {
     const newValue = value.toString();
 
     image.setAttribute(IMAGE_LOADING_ATTRIBUTE, newValue);
-    skeleton?.setAttribute(RELATIVE_IMAGE_LOADING_ATTRIBUTE, newValue);
-    placeholder?.setAttribute(RELATIVE_IMAGE_LOADING_ATTRIBUTE, newValue);
-    error?.setAttribute(RELATIVE_IMAGE_LOADING_ATTRIBUTE, newValue);
+    skeleton?.setAttribute(IMAGE_RELATIVE_LOADING_ATTRIBUTE, newValue);
+    placeholder?.setAttribute(IMAGE_RELATIVE_LOADING_ATTRIBUTE, newValue);
+    error?.setAttribute(IMAGE_RELATIVE_LOADING_ATTRIBUTE, newValue);
 
     if (image.getAttribute(IMAGE_ERROR_ATTRIBUTE) === "true") {
       image.removeAttribute(IMAGE_ERROR_ATTRIBUTE);
     }
 
-    if (skeleton?.getAttribute(RELATIVE_IMAGE_ERROR_ATTRIBUTE) === "true") {
-      skeleton.removeAttribute(RELATIVE_IMAGE_ERROR_ATTRIBUTE);
+    if (skeleton?.getAttribute(IMAGE_RELATIVE_ERROR_ATTRIBUTE) === "true") {
+      skeleton.removeAttribute(IMAGE_RELATIVE_ERROR_ATTRIBUTE);
     }
 
-    if (placeholder?.getAttribute(RELATIVE_IMAGE_ERROR_ATTRIBUTE) === "true") {
-      placeholder.removeAttribute(RELATIVE_IMAGE_ERROR_ATTRIBUTE);
+    if (placeholder?.getAttribute(IMAGE_RELATIVE_ERROR_ATTRIBUTE) === "true") {
+      placeholder.removeAttribute(IMAGE_RELATIVE_ERROR_ATTRIBUTE);
     }
 
-    if (error?.getAttribute(RELATIVE_IMAGE_ERROR_ATTRIBUTE) === "true") {
-      error.removeAttribute(RELATIVE_IMAGE_ERROR_ATTRIBUTE);
+    if (error?.getAttribute(IMAGE_RELATIVE_ERROR_ATTRIBUTE) === "true") {
+      error.removeAttribute(IMAGE_RELATIVE_ERROR_ATTRIBUTE);
     }
 
     if (!value) {
@@ -91,15 +91,15 @@ const imageLoadingState = {
 
     const errorValue = true.toString();
     image.setAttribute(IMAGE_ERROR_ATTRIBUTE, errorValue);
-    skeleton?.setAttribute(RELATIVE_IMAGE_ERROR_ATTRIBUTE, errorValue);
-    placeholder?.setAttribute(RELATIVE_IMAGE_ERROR_ATTRIBUTE, errorValue);
-    error?.setAttribute(RELATIVE_IMAGE_ERROR_ATTRIBUTE, errorValue);
+    skeleton?.setAttribute(IMAGE_RELATIVE_ERROR_ATTRIBUTE, errorValue);
+    placeholder?.setAttribute(IMAGE_RELATIVE_ERROR_ATTRIBUTE, errorValue);
+    error?.setAttribute(IMAGE_RELATIVE_ERROR_ATTRIBUTE, errorValue);
 
     const loadingValue = false.toString();
     image.setAttribute(IMAGE_LOADING_ATTRIBUTE, loadingValue);
-    skeleton?.setAttribute(RELATIVE_IMAGE_LOADING_ATTRIBUTE, loadingValue);
-    placeholder?.setAttribute(RELATIVE_IMAGE_LOADING_ATTRIBUTE, loadingValue);
-    error?.setAttribute(RELATIVE_IMAGE_LOADING_ATTRIBUTE, loadingValue);
+    skeleton?.setAttribute(IMAGE_RELATIVE_LOADING_ATTRIBUTE, loadingValue);
+    placeholder?.setAttribute(IMAGE_RELATIVE_LOADING_ATTRIBUTE, loadingValue);
+    error?.setAttribute(IMAGE_RELATIVE_LOADING_ATTRIBUTE, loadingValue);
 
     this.pushEvent("imageLoadingState.error", {
       id,
