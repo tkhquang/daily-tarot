@@ -13,7 +13,7 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
     js
     |> JS.toggle_class("rotate-y-180")
     |> JS.remove_class("rotate-y-180", to: ".card[data-selected='true']")
-    |> JS.push("flip_card", loading: "#interpretation-content")
+    |> JS.push("flip_card")
   end
 
   def flip_card(assigns) do
