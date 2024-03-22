@@ -1,6 +1,6 @@
 // See the Tailwind configuration guide for advanced usage
 // https://tailwindcss.com/docs/configuration
-
+/** @type {import('tailwindcss').Config} */
 const plugin = require("tailwindcss/plugin");
 const fs = require("fs");
 const path = require("path");
@@ -11,6 +11,7 @@ module.exports = {
     "../lib/daily_tarot_web.ex",
     "../lib/daily_tarot_web/**/*.*ex",
   ],
+  darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     extend: {
       // Adds a new breakpoint in addition to the default breakpoints
@@ -66,6 +67,7 @@ module.exports = {
     },
   },
   plugins: [
+    require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),
     // Allows prefixing tailwind classes with LiveView classes to add rules
     // only when LiveView classes are applied, for example:
