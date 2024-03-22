@@ -12,30 +12,30 @@ defmodule DailyTarotWeb.Interpretation.Description do
       <p :if={@render_card_info.description != nil}>
         <%= @render_card_info.description %>
       </p>
-      
+
       <p :if={@render_card_info.general != nil}>
         <%= @render_card_info.general %>
       </p>
-      
+
       <div :if={@render_card_info.career != nil} class="my-4">
         <h2 class="font-bold">Career 🎯</h2>
-        
+
         <p>
           <%= @render_card_info.career %>
         </p>
       </div>
-      
+
       <div :if={@render_card_info.love != nil} class="my-4">
         <h2 class="font-bold">Love 💕</h2>
-        
+
         <p>
           <%= @render_card_info.love %>
         </p>
       </div>
-      
+
       <div :if={@render_card_info.spirituality != nil} class="my-4">
         <h2 class="font-bold">Spirituality 🌿</h2>
-        
+
         <p>
           <%= @render_card_info.spirituality %>
         </p>
