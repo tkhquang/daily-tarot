@@ -6,13 +6,20 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
 
   @spec on_mount(any(), any()) :: any()
   def on_mount(js \\ %JS{}, is_flipped_card) do
-    if is_flipped_card, do: js |> JS.add_class("rotate-y-180"), else: js
+    if is_flipped_card,
+      do:
+        js
+        |> JS.add_class("rotate-y-180")
+        |> JS.set_attribute({"data-selected", "true"}),
+      else: js
   end
 
-  def on_click(js \\ %JS{}) do
+  def on_click(js \\ %JS{}, id) do
     js
     |> JS.toggle_class("rotate-y-180")
     |> JS.remove_class("rotate-y-180", to: ".card[data-selected='true']")
+    |> JS.set_attribute({"data-selected", "false"}, to: ".card[data-selected='true']")
+    |> JS.set_attribute({"data-selected", "true"}, to: "##{id}")
     |> JS.push("flip_card")
   end
 
@@ -41,9 +48,8 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
           )
         ]}
         data-index={@index}
-        data-selected={if @is_flipped_card, do: "true", else: "false"}
         phx-mounted={on_mount(@is_flipped_card)}
-        phx-click={on_click()}
+        phx-click={on_click(@id)}
         phx-value-card_number={@card_number}
         phx-value-index={@index}
       >
@@ -55,7 +61,7 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
             id={"back-#{@index}"}
           />
         </div>
-
+        
         <div class="rotate-y-180 backface-hidden surface absolute h-full w-full overflow-hidden rounded shadow-md md:rounded-lg">
           <.live_component
             module={FlipCardImage}
