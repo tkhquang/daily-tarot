@@ -20,7 +20,7 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
     |> JS.remove_class("rotate-y-180", to: ".card[data-selected='true']")
     |> JS.set_attribute({"data-selected", "false"}, to: ".card[data-selected='true']")
     |> JS.set_attribute({"data-selected", "true"}, to: "##{id}")
-    |> JS.push("flip_card")
+    |> JS.push("flip_card", loading: "#interpretation-content")
   end
 
   def flip_card(assigns) do
@@ -61,7 +61,7 @@ defmodule DailyTarotWeb.TarotCard.FlipCard do
             id={"back-#{@index}"}
           />
         </div>
-        
+
         <div class="rotate-y-180 backface-hidden surface absolute h-full w-full overflow-hidden rounded shadow-md md:rounded-lg">
           <.live_component
             module={FlipCardImage}
