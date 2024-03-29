@@ -10,6 +10,7 @@
     "npm": "^10.0.0"
   },
   "devDependencies": {
+    "@types/node": "^20.11.30",
     "@types/phoenix": "^1.6.4",
     "@types/phoenix_live_view": "^0.18.4",
     "esbuild": "^0.16.17",

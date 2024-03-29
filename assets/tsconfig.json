@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["phoenix"],
+    "types": ["phoenix", "node"],
     "moduleResolution": "node",
     "typeRoots": ["node_modules/@types"],
     "lib": ["ES2021", "dom", "dom.iterable"],
