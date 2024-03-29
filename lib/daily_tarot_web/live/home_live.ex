@@ -25,7 +25,8 @@ defmodule DailyTarotWeb.HomeLive do
               locale: nil,
               timezone: nil,
               timezone_offset: nil,
-              color_mode: nil
+              color_mode: nil,
+              number: 5
             )
 
           socket
@@ -40,7 +41,8 @@ defmodule DailyTarotWeb.HomeLive do
               locale: nil,
               timezone: nil,
               timezone_offset: nil,
-              color_mode: nil
+              color_mode: nil,
+              number: 5
             )
 
           socket
@@ -295,5 +297,10 @@ defmodule DailyTarotWeb.HomeLive do
   @impl true
   def handle_event("web_console", session, socket) do
     {:noreply, socket |> push_event("console.log", session)}
+  end
+
+  @impl true
+  def handle_event("set_number", %{"number" => number}, socket) do
+    {:noreply, assign(socket, :number, number)}
   end
 end

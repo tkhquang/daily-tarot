@@ -88,6 +88,8 @@ defmodule DailyTarotWeb do
       import DailyTarotWeb.Gettext
       import DailyTarotUtils.WebHelper
 
+      import LiveSvelte
+
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
 

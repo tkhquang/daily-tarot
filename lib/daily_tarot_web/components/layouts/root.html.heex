@@ -7,11 +7,11 @@
     <.live_title suffix=" · Phoenix Framework">
       <%= assigns[:page_title] || "DailyTarot" %>
     </.live_title>
-     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
   </head>
-  
+
   <body>
     <script>
       // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
@@ -45,6 +45,6 @@
         setTheme(preferredTheme || (darkQuery.matches ? "dark" : "light"));
       })();
     </script>
-     <%= @inner_content %>
+    <%= @inner_content %>
   </body>
 </html>

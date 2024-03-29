@@ -21,11 +21,13 @@ import "phoenix_html";
 import { Socket } from "phoenix";
 import { LiveSocket } from "phoenix_live_view";
 import topbar from "../vendor/topbar";
+import { getHooks } from "live_svelte";
 import LocalStateStore from "./hooks/localStateStore";
 import ImageLoadingState from "./hooks/imageLoadingState";
 import DarkThemeToggle from "./hooks/darkThemeToggle";
 import ScrollToTop from "./hooks/scrollToTop";
 import WebConsole from "./hooks/webConsole";
+import * as Components from "../svelte/**/*.svelte";
 
 import { SocketOptions } from "phoenix_live_view";
 
@@ -35,6 +37,7 @@ let Hooks = {
   DarkThemeToggle,
   ScrollToTop,
   WebConsole,
+  ...getHooks(Components),
 };
 
 interface MySocketOptions extends SocketOptions {

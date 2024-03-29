@@ -8,6 +8,7 @@ defmodule DailyTarot.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      {NodeJS.Supervisor, [path: LiveSvelte.SSR.NodeJS.server_path(), pool_size: 4]},
       DailyTarotWeb.Telemetry,
       DailyTarot.Repo,
       {Oban, Application.fetch_env!(:daily_tarot, Oban)},

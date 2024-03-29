@@ -5,6 +5,7 @@ volumes:
   mixdeps:
   elixir_ls:
   mixbuild:
+  node_modules:
 
 services:
   db:
@@ -34,3 +35,4 @@ services:
       - mixdeps:/app/deps
       - elixir_ls:/app/.elixir_ls
       - mixbuild:/app/_build
+      - node_modules:/app/assets/node_modules

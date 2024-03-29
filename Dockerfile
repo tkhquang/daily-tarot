@@ -65,6 +65,7 @@ COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 COPY lib lib
 COPY priv priv
+RUN apk add nodejs --update-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/main --allow-untrusted
 RUN mkdir /app/assets
 COPY assets assets
 COPY --from=build-node-assets /app/assets assets

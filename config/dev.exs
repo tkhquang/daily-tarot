@@ -26,7 +26,8 @@ config :daily_tarot, DailyTarotWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "/PDJqjwCP4/J4aCArDgX1XSfsubSn5xzj8BNINZPAV0g7uiDIolJ49pa90AHuN47",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:daily_tarot, ~w(--sourcemap=inline --watch)]},
+    node: ["build.ts", "--watch", cd: Path.expand("../assets", __DIR__)],
+    # esbuild: {Esbuild, :install_and_run, [:daily_tarot, ~w(--sourcemap=inline --watch)]},
     sass: {
       DartSass,
       :install_and_run,
