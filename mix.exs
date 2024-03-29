@@ -107,7 +107,7 @@ defmodule DailyTarot.MixProject do
       "assets.deploy": [
         "sass default --no-source-map --style=compressed",
         "tailwind app --minify",
-        "cmd --cd assets node build.js --deploy",
+        "cmd --cd assets node build.ts --deploy",
         "phx.digest"
       ]
     ]
