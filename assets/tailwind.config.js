@@ -10,6 +10,7 @@ module.exports = {
     "./js/**/*.js",
     "../lib/daily_tarot_web.ex",
     "../lib/daily_tarot_web/**/*.*ex",
+    "./svelte/**/*.svelte",
   ],
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {

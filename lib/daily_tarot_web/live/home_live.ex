@@ -1,5 +1,6 @@
 defmodule DailyTarotWeb.HomeLive do
   use DailyTarotWeb, :live_view
+  use LiveSvelte.Components
 
   import DailyTarotWeb.Interpretation
   import DailyTarotWeb.TarotCard.FlipCard

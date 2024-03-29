@@ -41,7 +41,6 @@ defmodule DailyTarot.MixProject do
       {:phoenix_live_view, "~> 0.20.2"},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
-      {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
       {:heroicons,
        github: "tailwindlabs/heroicons",
@@ -62,7 +61,8 @@ defmodule DailyTarot.MixProject do
       {:tzdata, "~> 1.1"},
       {:uuid, "~> 1.1"},
       {:dart_sass, "~> 0.7", runtime: Mix.env() == :dev},
-      {:tailwind_formatter, "~> 0.4.0", only: [:dev, :test], runtime: false}
+      {:tailwind_formatter, "~> 0.4.0", only: [:dev, :test], runtime: false},
+      {:live_svelte, "~> 0.13.0"}
     ]
   end
 
@@ -78,7 +78,8 @@ defmodule DailyTarot.MixProject do
         "deps.get",
         "ecto.setup",
         "assets.setup",
-        "assets.build"
+        "assets.build",
+        "cmd --cd assets yarn install"
       ],
       "ecto.setup": [
         "ecto.create",
@@ -106,7 +107,7 @@ defmodule DailyTarot.MixProject do
       "assets.deploy": [
         "sass default --no-source-map --style=compressed",
         "tailwind app --minify",
-        "esbuild daily_tarot --minify",
+        "cmd --cd assets node build.ts --deploy",
         "phx.digest"
       ]
     ]
